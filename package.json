@@ -1,0 +1,22 @@
+{
+  "name": "cli",
+  "version": "1.0.0",
+  "main": "index.js",
+  "bin": {
+    "dumb": "./cli.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "description": "",
+  "dependencies": {
+    "cli-table3": "^0.6.5",
+    "inquirer": "^12.3.3",
+    "prompts": "^2.4.2",
+    "yargs": "^17.7.2"
+  }
+}

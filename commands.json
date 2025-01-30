@@ -1,0 +1,23 @@
+[
+  {
+    "command": "dumb",
+    "comment": "DumbCLI command"
+  },
+  {
+    "command": "ollama run hf.co/afrideva/phi-2-uncensored-GGUF:latest",
+    "comment": "Phi-2 latest"
+  },
+  {
+    "command": "ollama run hf.co/afrideva/phi-2-uncensored-GGUF:Q5_K_M",
+    "comment": "phi-2 Q5_K_M" 
+  },
+  {
+    "command": "ollama run rolandroland/llama3.1-uncensored",
+    "comment": "ollama"
+  },
+  {
+    "command": "ollama run rolandroland/llama3.1-uncensored ",
+    "comment": "Used to run llama 3.1 uncensorred",
+    "date": "2025-01-30T21:05:21.048Z"
+  }
+]
