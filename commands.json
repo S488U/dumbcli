@@ -1,7 +1,7 @@
 [
   {
     "command": "dumb",
-    "comment": "DumbCLI command"
+    "comment": "DumbCLI"
   },
   {
     "command": "ollama run hf.co/afrideva/phi-2-uncensored-GGUF:latest",
@@ -9,7 +9,7 @@
   },
   {
     "command": "ollama run hf.co/afrideva/phi-2-uncensored-GGUF:Q5_K_M",
-    "comment": "phi-2 Q5_K_M" 
+    "comment": "phi-2 Q5_K_M"
   },
   {
     "command": "ollama run rolandroland/llama3.1-uncensored",
