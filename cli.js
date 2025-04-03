@@ -91,13 +91,17 @@ yargs.command('run <index>', 'Execute a saved command', (yargs) => {
   const confirm = await prompts({ type: 'confirm', name: 'value', message: `Run "${commands[index].command}"?`, initial: true });
   if (!confirm.value) return console.log(chalk.yellow('⚠️ Execution canceled.'));
 
-  console.log(chalk.green(`🚀 Running: ${commands[index].command}`));
-  exec(commands[index].command, (error, stdout, stderr) => {
-    if (error) return console.log(chalk.red(`❌ Error: ${error.message}`));
-    if (stderr) console.log(chalk.yellow(`⚠️ ${stderr}`));
-    console.log(stdout);
-  });
+  const commandToRun = commands[index].command.replace('~', process.env.HOME);
+
+  try {
+    console.log(chalk.green(`🚀 Running: ${commandToRun}`));
+    const { execSync } = require('child_process');
+    execSync(`bash -c "${commandToRun}"`, { stdio: 'inherit' });
+  } catch (error) {
+    console.log(chalk.red(`❌ Execution failed: ${error.message}`));
+  }
 });
+
 
 // Dump raw command data
 yargs.command('dump cmd', 'Show raw commands.json data', () => {}, () => {
@@ -106,22 +110,27 @@ yargs.command('dump cmd', 'Show raw commands.json data', () => {}, () => {
 });
 
 // Fix `-v` not working
-yargs.version('1.0.0').alias('v', 'version');
+yargs.version('1.1.0').alias('v', 'version');
 
 // Improved help menu
 yargs.help().alias('h', 'help').example('dumb add', 'Add a new command').example('dumb find "ollama"', 'Search for a command related to "ollama"');
 
-// Custom welcome message
-yargs.command('*', 'Show welcome message and GitHub link', () => {
-  if (yargs.argv._.length === 0) {
-    console.log(chalk.green('👋 Welcome to DumbCLI!'));
-    console.log('  - `dumb add` to add a new command');
-    console.log('  - `dumb find "<query>"` to search commands');
-    console.log('  - `dumb ls` to list all commands');
-    console.log('  - `dumb run <index>` to execute a saved command');
-    console.log(`\nConnect with me on GitHub: ${chalk.blue('https://github.com/S488U')}`);
-  }
-}, () => {});
+// Show welcome message ONLY when no arguments are passed
+if (process.argv.length === 2) {
+  console.log(chalk.green('👋 Welcome to DumbCLI!'));
+  console.log('  - dumb add to add a new command');
+  console.log('  - dumb find "<query>" to search commands');
+  console.log('  - dumb ls to list all commands');
+  console.log('  - dumb run <index> to execute a saved command');
+  console.log(`\nConnect with me on GitHub: ${chalk.blue('https://github.com/S488U')}`);
+  process.exit(0);
+}
+
+// Handle unknown commands
+yargs.command('*', false, () => {}, (argv) => {
+  console.log(chalk.red(`❌ Invalid command: "${argv._.join(' ')}"`));
+  console.log(chalk.yellow('ℹ️  Use "dumb --help" to see available commands.'));
+});
 
 // Parse CLI arguments
 yargs.parse();
