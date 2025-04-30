@@ -1,8 +1,8 @@
-██████╗ ██╗   ██╗███╗   ███╗███████╗ ██████╗██╗     ██╗
-██╔══██╗██║   ██║████╗ ████║██╔════╝██╔════╝██║     ██║
-██║  ██║██║   ██║██╔████╔██║█████╗  ██║     ██║     ██║
-██║  ██║██║   ██║██║╚██╔╝██║██╔══╝  ██║     ██║     ██║
-██████╔╝╚██████╔╝██║ ╚═╝ ██║███████╗╚██████╗███████╗██║
+██████╗ ██╗   ██╗███╗   ███╗███████╗╔██████╗██╗     ██╗
+██╔══██╗██║   ██║████╗ ████║██╔══██║║██╔═══╝██║     ██║
+██║  ██║██║   ██║██╔████╔██║███████║║██║    ██║     ██║
+██║  ██║██║   ██║██║╚██╔╝██║██╔══██║║██║    ██║     ██║
+██████╔╝╚██████╔╝██║ ╚═╝ ██║███████║╚██████╗███████╗██║
 ╚═════╝  ╚═════╝ ╚═╝     ╚═╝╚══════╝ ╚═════╝╚══════╝╚═╝
 
       "Smart CLI, Dumb Name" 🚀  
@@ -12,3 +12,12 @@
 🔹 Plugins: `dumb plugin list`
 🔹 Docs: https://dumbcli.dev/docs
 ---------------------------------------------------
+
+This a tool which helps developers or sysadmins to monitor and manage the files, the tool is basically saves folder structures in the format of tree structure in a file called working-directory.dgrm.
+
+The tool have 2 functionalities, 
+ - .sIgnore = which ignores all the files and folders like .gitIgnore when the working directory is scanning and supports the formating like ,gitIgnore.
+ - print command = when a user types print command, the tool will scan the current working directory of user where he runs the tool and look for the .sIgnore file, if .sIgnore file is finded it blacklists the files and folders and get all the directories and files inside the working directories and save in a file called working-directory,dgrm.
+
+The file naming convention is:
+According to the users current working directory name will be the name of the file also. and the file extension will be a .dgrm 

@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "bin": {
-    "dumb": "./cli.js"
+    "dumb": "./cli.js",
+    "d": "./cli.js"    
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
