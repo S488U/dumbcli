@@ -1,3 +1,4 @@
+```bash
 sabbu@ArchLinux:~$ d
 👋 Welcome to DumbCLI! (v1.3.0 - Now with IDs, Aliases & more!)
    Manage your frequently used shell commands easily.
@@ -20,3 +21,4 @@ Config directory: /home/sabbu/.dumbcli
 
 Connect with me on GitHub: https://github.com/S488U
 sabbu@ArchLinux:~$
+```
