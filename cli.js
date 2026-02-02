@@ -688,12 +688,27 @@ dumb.command('$0 <input..>', false, (yargs) => { // '$0' makes it the default, `
     showWelcomeOrHelp();
 });
 
+const printBanner = () => {
+    const logo = `
+██████╗ ██╗   ██╗███╗   ███╗███████╗╔██████╗██╗     ██╗
+██╔══██╗██║   ██║████╗ ████║██╔══██║║██╔═══╝██║     ██║
+██║  ██║██║   ██║██╔████╔██║███████║║██║    ██║     ██║
+██║  ██║██║   ██║██║╚██╔╝██║██╔══██║║██║    ██║     ██║
+██████╔╝╚██████╔╝██║ ╚═╝ ██║███████║╚██████╗███████╗██║
+╚═════╝  ╚═════╝ ╚═╝     ╚═╝╚══════╝ ╚═════╝╚══════╝╚═╝
+    `;
+    // Print the logo in Red (classic hacking style) or Cyan (modern)
+    console.log(chalk.cyan.bold(logo)); 
+    console.log(chalk.yellow.bold('      The "Dumb" Way to Manage Smart Commands\n'));
+};
+
 
 // --- Yargs Setup and Finalization ---
 
 const showWelcomeOrHelp = () => {
     // Only show detailed welcome if *exactly* 'dumb' is typed with no arguments/commands
     if (process.argv.length === 2 && process.stdin.isTTY) {
+        printBanner();
         console.log(chalk.green.bold('👋 Welcome to DumbCLI! (v1.3.0 - Now with IDs, Aliases & more!)'));
         console.log('   Manage your frequently used shell commands easily.');
         console.log('\n' + chalk.yellow('Common Commands:'));
