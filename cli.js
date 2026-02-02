@@ -720,7 +720,7 @@ const showWelcomeOrHelp = () => {
         console.log('  - dumb dl <id|alias>       : Delete a command');
         console.log('  - dumb import [-a] <file>  : Import commands from JSON');
         console.log('  - dumb export [path]       : Export commands to JSON');
-        console.log('\n' + chalk.cyan('Power User Quick Add:'));
+        console.log('\n' + chalk.cyan(chalk.red.bold('(Alpha)') + ' Power User Quick Add:'));
         console.log('  - d:a:<command>[:alias[:comment]]');
         console.log('\n' + chalk.dim(`Use "dumb --help" for all commands and options.`));
         console.log(chalk.dim(`Config directory: ${configDir}`));
@@ -734,7 +734,7 @@ const showWelcomeOrHelp = () => {
 };
 
 
-yargs.version('1.3.0') // Updated version
+dumb.version('1.3.0') // Updated version
     .alias('v', 'version')
     .help()
     .alias('h', 'help')
