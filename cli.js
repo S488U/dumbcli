@@ -1,13 +1,16 @@
 #!/usr/bin/env node
 
-const yargs = require('yargs');
-const fs = require('fs');
-const path = require('path');
-const os = require('os');
-const prompts = require('prompts');
-const { exec, execSync } = require('child_process');
-const Table = require('cli-table3');
-const chalk = require('chalk').default;
+import yargs from 'yargs/yargs';
+import { hideBin } from 'yargs/helpers';
+import fs from 'fs';
+import path from 'path';
+import os from 'os';
+import prompts from 'prompts';
+import { execSync } from 'child_process';
+import Table from 'cli-table3';
+import chalk from 'chalk'
+
+const dumb = yargs(hideBin(process.argv));
 
 // --- Configuration ---
 const configDir = path.join(os.homedir(), '.dumbcli');
@@ -604,34 +607,34 @@ const handleImportCommand = async (importFilePath, appendMode) => {
 // --- Yargs Command Definitions ---
 
 // Add
-yargs.command('add', 'Add a new command interactively', {}, () => handleAddCommand());
+dumb.command('add', 'Add a new command interactively', {}, () => handleAddCommand());
 
 // List
-yargs.command(['ls', 'list'], 'List all saved commands', {}, () => handleListCommands());
+dumb.command(['ls', 'list'], 'List all saved commands', {}, () => handleListCommands());
 
 // Delete
-yargs.command('dl <specifier>', 'Delete a command by ID or Alias', (yargs) => {
+dumb.command('dl <specifier>', 'Delete a command by ID or Alias', (yargs) => {
   yargs.positional('specifier', { describe: 'ID or Alias of the command to delete', type: 'string' });
 }, (argv) => handleDeleteCommand(argv.specifier));
 
 // Edit
-yargs.command('edit <specifier>', 'Edit a command by ID or Alias', (yargs) => {
+dumb.command('edit <specifier>', 'Edit a command by ID or Alias', (yargs) => {
     yargs.positional('specifier', { describe: 'ID or Alias of the command to edit', type: 'string' });
 }, (argv) => handleEditCommand(argv.specifier));
 
 // Find
-yargs.command('find <query>', 'Find commands by ID, Alias, Command, or Comment (case-insensitive)', (yargs) => {
+dumb.command('find <query>', 'Find commands by ID, Alias, Command, or Comment (case-insensitive)', (yargs) => {
   yargs.positional('query', { describe: 'Text to search for', type: 'string' });
 }, (argv) => handleFindCommand(argv.query));
 
 // Run
-yargs.command(['run <specifier> [args..]', 'r <specifier> [args..]'], 'Execute a command by ID or Alias (pass arguments for dynamic commands)', (yargs) => {
+dumb.command(['run <specifier> [args..]', 'r <specifier> [args..]'], 'Execute a command by ID or Alias (pass arguments for dynamic commands)', (yargs) => {
   yargs.positional('specifier', { describe: 'ID or Alias of the command to run', type: 'string' });
   yargs.positional('args', { describe: 'Arguments to pass to the command (for {} placeholders)', type: 'string', array: true }); // Capture remaining args
 }, (argv) => handleRunCommand(argv.specifier, argv.args));
 
 // Dump
-yargs.command('dump', 'Show raw data from dumbcli.json', () => {
+dumb.command('dump', 'Show raw data from dumbcli.json', () => {
   console.log(chalk.magenta(`📂 Raw data from ${commandsFile}:`));
   try {
       const rawData = fs.existsSync(commandsFile) ? fs.readFileSync(commandsFile, 'utf-8') : '[]';
@@ -642,12 +645,12 @@ yargs.command('dump', 'Show raw data from dumbcli.json', () => {
 });
 
 // Export
-yargs.command('export [path]', 'Export all commands to a JSON file', (yargs) => {
+dumb.command('export [path]', 'Export all commands to a JSON file', (yargs) => {
     yargs.positional('path', { describe: 'Optional directory path to export the file to (defaults to current)', type: 'string' });
 }, (argv) => handleExportCommand(argv.path));
 
 // Import
-yargs.command('import <file>', 'Import commands from a JSON file', (yargs) => {
+dumb.command('import <file>', 'Import commands from a JSON file', (yargs) => {
     yargs.positional('file', { describe: 'Path to the JSON file to import', type: 'string', demandOption: true });
     yargs.option('a', {
         alias: 'append',
@@ -660,8 +663,8 @@ yargs.command('import <file>', 'Import commands from a JSON file', (yargs) => {
 
 // --- Power User Syntax (Experimental) ---
 // Use a default command to catch non-standard input like d:a:...
-yargs.command('$0 <input..>', false, (yargs) => { // '$0' makes it the default, `false` hides from help
-    yargs.positional('input', { type: 'string', array: true });
+dumb.command('$0 <input..>', false, (yargs) => { // '$0' makes it the default, `false` hides from help
+    dumb.positional('input', { type: 'string', array: true });
 }, (argv) => {
     const rawInput = argv.input.join(' '); // Reconstruct input string if spaces were involved
     const powerMatch = rawInput.match(/^d:a:(.+)$/); // Match d:a:<rest>
@@ -720,10 +723,10 @@ yargs.version('1.3.0') // Updated version
     .alias('v', 'version')
     .help()
     .alias('h', 'help')
-    .wrap(yargs.terminalWidth())
+    .wrap(dumb.terminalWidth())
     .strict() // Report unrecognized commands/options
     // Use fail handler for better custom error messages if needed, but demandCommand is often enough
-    .demandCommand(1, '') // Suppress default message, rely on our welcome or $0 handler
+    //.demandCommand(1, '') // Suppress default message, rely on our welcome or $0 handler
     .recommendCommands() // Suggest commands on typo
     .epilog(`For more help, visit: ${chalk.blueBright('https://github.com/S488U')}`)
     // Update examples
@@ -747,7 +750,7 @@ ensureConfigDirExists(); // Make sure config dir exists early
 
 // Only parse if we didn't handle it via the $0 check above or the specific welcome message
 if (process.argv.length > 2 || (process.argv.length === 2 && !process.stdin.isTTY)) {
-     yargs.parse();
+     dumb.parse();
 } else if (process.argv.length === 2 && process.stdin.isTTY) {
     // This case should now be handled by the $0 default command triggering showWelcomeOrHelp
     // But we can leave this as a fallback safety net.
