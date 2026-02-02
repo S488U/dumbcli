@@ -48,10 +48,16 @@ if (-not (Test-Path $installDir)) {
 if (Test-Path (Join-Path $installDir ".git")) {
     Write-Host "Update detected. Pulling latest changes..."
     Set-Location $installDir
-    $gitStatus = git status --porcelain
+    $gitStatus = git status --porcelain --untracked-files=no
     if ($gitStatus) {
-        Write-Warning "Error: Local changes found in $installDir. Please commit or stash before updating."
-        exit 1
+        if ($gitStatus -eq " M package-lock.json") {
+            Write-Host "Note: package-lock.json has local changes. Resetting it for update..."
+            git checkout -- package-lock.json
+        } else {
+            Write-Warning "Error: Local changes found in $installDir. Please commit or stash before updating."
+            git status --porcelain
+            exit 1
+        }
     }
     git pull --ff-only origin main
     Write-Host "Updating dependencies..."

@@ -88,9 +88,16 @@ mkdir -p "$INSTALL_DIR"
 if [ -d "$INSTALL_DIR/.git" ]; then
   echo "Update detected. Pulling latest changes..."
   cd "$INSTALL_DIR" || exit
-  if [ -n "$(git status --porcelain)" ]; then
-    echo "Error: Local changes found in $INSTALL_DIR. Please commit or stash before updating."
-    exit 1
+  DIRTY_STATUS="$(git status --porcelain --untracked-files=no)"
+  if [ -n "$DIRTY_STATUS" ]; then
+    if [ "$DIRTY_STATUS" = " M package-lock.json" ]; then
+      echo "Note: package-lock.json has local changes. Resetting it for update..."
+      git checkout -- package-lock.json
+    else
+      echo "Error: Local changes found in $INSTALL_DIR. Please commit or stash before updating."
+      git status --porcelain
+      exit 1
+    fi
   fi
   git pull --ff-only origin main
   echo "Updating dependencies..."
