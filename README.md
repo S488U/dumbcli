@@ -43,9 +43,42 @@ If you mistype a command, break a flag, or run a syntax error, your shell histor
 
 ---
 
-## Installation
+## Installation (Local Script, Safer)
 
-Download from our website: [https://plexaur.com/dumbcli](https://plexaur.com/dumbcli)
+We recommend downloading the installer and running it locally (no direct `curl | bash`).
+
+### Linux / macOS
+```bash
+# Download the installer
+curl -fsSL https://plexaur.com/dumbcli/install.sh -o install.sh
+
+# Review the script (recommended)
+less install.sh
+
+# Run it
+chmod +x install.sh
+./install.sh
+```
+
+### Windows (PowerShell)
+```powershell
+# Download the installer
+iwr -UseBasicParsing https://plexaur.com/dumbcli/install.ps1 -OutFile install.ps1
+
+# Review the script (recommended)
+notepad .\install.ps1
+
+# Run it
+powershell -ExecutionPolicy Bypass -File .\install.ps1
+```
+
+### Windows (CMD + curl)
+```cmd
+curl -fsSL https://plexaur.com/dumbcli/install.ps1 -o install.ps1
+powershell -ExecutionPolicy Bypass -File install.ps1
+```
+
+The installer will handle both first-time install and updates.
 
 ## Quick Start
 
@@ -125,9 +158,20 @@ Now the new dev has all the project scripts ready to go!
 
 ---
 
-## Configuration
-Your commands are stored locally in `~/.dumbcli/dumbcli.json`.
-You can back up this folder or sync it across machines.
+## Installation Location
+DumbCLI installs the project files in a permanent, OS-specific location:
+* Linux: `~/.local/share/dumbcli` (or `$XDG_DATA_HOME/dumbcli`)
+* macOS: `~/Library/Application Support/DumbCLI`
+* Windows: `%LOCALAPPDATA%\DumbCLI`
+
+This is separate from your personal command data.
+
+## Configuration & Data
+Your commands and settings are stored locally in `~/.dumbcli/`:
+* Commands: `~/.dumbcli/dumbcli.json`
+* Config: `~/.dumbcli/config.json`
+
+Back up or sync this folder if you want to move your commands across machines.
 
 ---
 
