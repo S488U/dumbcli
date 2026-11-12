@@ -33,8 +33,12 @@ foreach ($req in $requirements) {
 # ⚠️ Node.js version check
 $nodeVersion = (node -v).TrimStart("v")
 $maxVersion = "23.9.0"
-if ($nodeVersion -gt $maxVersion) {
-    Write-Warning "Warning: Node.js v$nodeVersion may be too new. Use v$maxVersion or below."
+try {
+    if ([version]$nodeVersion -gt [version]$maxVersion) {
+        Write-Warning "Warning: Node.js v$nodeVersion may be too new. Use v$maxVersion or below."
+    }
+} catch {
+    # Ignore non-standard version strings (e.g. nightly/rc builds)
 }
 
 # 📁 Install or Update (permanent install dir)
