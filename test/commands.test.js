@@ -151,4 +151,44 @@ describe('commands and CLI integration', () => {
     assert.equal(saved[0].command, 'echo test');
     assert.equal(saved[0].alias, 't');
   });
+
+  it('supports implicit run by alias or ID including dash flags, and respects --strict', async () => {
+    const { paths } = createTempEnv();
+    writeConfig({ nextId: 2 }, paths);
+    writeCommands([{ id: 1, alias: 'c', command: 'cat {} {}', comment: false }], paths);
+
+    const executed = [];
+    await runCli(['c', '-n', 'cli.js'], {
+      paths,
+      exitProcess: false,
+      prompts: async () => ({ value: true }),
+      execSync: (cmd) => executed.push(cmd),
+    });
+    assert.deepEqual(executed, ['cat -n cli.js']);
+
+    await runCli(['1', '-b', 'README.md'], {
+      paths,
+      exitProcess: false,
+      prompts: async () => ({ value: true }),
+      execSync: (cmd) => executed.push(cmd),
+    });
+    assert.deepEqual(executed, ['cat -n cli.js', 'cat -b README.md']);
+
+    await runCli(['--strict', 'c', 'cli.js'], {
+      paths,
+      exitProcess: false,
+      prompts: async () => ({ value: true }),
+      execSync: (cmd) => executed.push(cmd),
+    });
+    assert.equal(executed.length, 2);
+
+    await runCli(['r', 'c', '-n', 'package.json'], {
+      paths,
+      exitProcess: false,
+      prompts: async () => ({ value: true }),
+      execSync: (cmd) => executed.push(cmd),
+    });
+    assert.equal(executed.length, 3);
+    assert.equal(executed[2], 'cat -n package.json');
+  });
 });

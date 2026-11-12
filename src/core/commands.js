@@ -3,6 +3,28 @@ import os from 'os';
 const PLACEHOLDER_REGEX = /\{\}/g;
 const NUMERIC_ID_REGEX = /^\d+$/;
 
+export const RESERVED_COMMAND_NAMES = new Set([
+  'add',
+  'ls',
+  'list',
+  'dl',
+  'edit',
+  'find',
+  'run',
+  'r',
+  'dump',
+  'export',
+  'import',
+  'help',
+  'version',
+]);
+
+/**
+ * Check whether an alias collides with a built-in CLI command name.
+ */
+export const isReservedAlias = (alias) =>
+  typeof alias === 'string' && RESERVED_COMMAND_NAMES.has(alias.trim().toLowerCase());
+
 /**
  * Validate an alias string (must be non-empty without whitespace or colons).
  */
@@ -10,6 +32,20 @@ export const isValidAlias = (alias) => {
   if (typeof alias !== 'string') return false;
   const trimmed = alias.trim();
   return trimmed.length > 0 && !/\s|:/.test(trimmed);
+};
+
+/**
+ * Validate an alias for format, reserved names, and uniqueness. Returns true or an error message.
+ */
+export const validateAlias = (alias, commands, excludeId = null) => {
+  if (!alias) return true;
+  const trimmed = alias.trim();
+  if (!isValidAlias(trimmed)) return 'Alias cannot contain spaces or colons.';
+  if (isReservedAlias(trimmed)) return `Alias "${trimmed}" is a reserved command name.`;
+  if (!isAliasUnique(trimmed, commands, excludeId)) {
+    return `Alias "${trimmed}" is already in use.`;
+  }
+  return true;
 };
 
 /**

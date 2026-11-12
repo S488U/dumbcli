@@ -29,7 +29,7 @@ export const showWelcome = (configDir, version = '1.3.0') => {
   console.log('  - dumb add                 : Add a new command interactively');
   console.log('  - dumb ls                  : List all commands (shows ID, Alias)');
   console.log('  - dumb find "<query>"      : Search commands (ID, Alias, text, comment)');
-  console.log('  - dumb run <id|alias> [args...] : Execute a command (use args for {})');
+  console.log('  - dumb <id|alias> [args...]     : Execute a command directly (or use "dumb run")');
   console.log('  - dumb edit <id|alias>     : Edit a command');
   console.log('  - dumb dl <id|alias>       : Delete a command');
   console.log('  - dumb import [-a] <file>  : Import commands from JSON');

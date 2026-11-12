@@ -5,9 +5,11 @@ import {
   filterCommands,
   findCommandByIdOrAlias,
   isAliasUnique,
+  isReservedAlias,
   isValidAlias,
   parsePowerAddInput,
   replacePlaceholders,
+  validateAlias,
 } from '../src/core/commands.js';
 
 describe('core/commands', () => {
@@ -32,6 +34,15 @@ describe('core/commands', () => {
     assert.equal(isAliasUnique('BUILD', sampleCommands, 1), true);
     assert.equal(isAliasUnique('fresh', sampleCommands), true);
     assert.equal(isAliasUnique('', sampleCommands), true);
+  });
+
+  it('rejects reserved built-in command names in validateAlias', () => {
+    assert.equal(isReservedAlias('ls'), true);
+    assert.equal(isReservedAlias('RUN'), true);
+    assert.equal(isReservedAlias('c'), false);
+    assert.match(validateAlias('ls', sampleCommands), /reserved/i);
+    assert.match(validateAlias('build', sampleCommands), /already in use/i);
+    assert.equal(validateAlias('c', sampleCommands), true);
   });
 
   it('finds commands by strict numeric ID or case-insensitive alias without parseInt prefix bugs', () => {

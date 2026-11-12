@@ -3,7 +3,7 @@ import path from 'path';
 import chalk from 'chalk';
 import prompts from 'prompts';
 import { getStoragePaths, readCommands, readConfig, writeCommands, writeConfig } from '../storage/store.js';
-import { isValidAlias } from '../core/commands.js';
+import { isReservedAlias, isValidAlias } from '../core/commands.js';
 
 /**
  * Build normalized command objects from imported entries, resolving alias collisions.
@@ -24,7 +24,7 @@ const buildImportedCommands = (importedCommands, startingId, existingAliasesLowe
     if (typeof impCmd.alias === 'string' && impCmd.alias.trim()) {
       const proposedAlias = impCmd.alias.trim();
       const proposedAliasLower = proposedAlias.toLowerCase();
-      if (isValidAlias(proposedAlias) && !seenAliasesLower.has(proposedAliasLower)) {
+      if (isValidAlias(proposedAlias) && !isReservedAlias(proposedAlias) && !seenAliasesLower.has(proposedAliasLower)) {
         newCmd.alias = proposedAlias;
         seenAliasesLower.add(proposedAliasLower);
       } else {

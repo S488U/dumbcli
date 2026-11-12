@@ -1,7 +1,7 @@
 import chalk from 'chalk';
 import prompts from 'prompts';
 import { getNextId, getStoragePaths, readCommands, writeCommands } from '../storage/store.js';
-import { isAliasUnique, isValidAlias } from '../core/commands.js';
+import { validateAlias } from '../core/commands.js';
 
 /**
  * Interactively add a new command (supports prefilled values from power-add syntax).
@@ -29,14 +29,7 @@ export const handleAddCommand = async (
       name: 'alias',
       message: 'Enter a short alias (optional, unique, no spaces/colons)',
       initial: initialAlias,
-      validate: (value) => {
-        if (!value) return true;
-        if (!isValidAlias(value)) return 'Alias cannot contain spaces or colons.';
-        if (!isAliasUnique(value.trim(), commands)) {
-          return `Alias "${value.trim()}" is already in use.`;
-        }
-        return true;
-      },
+      validate: (value) => validateAlias(value, commands),
     },
     {
       type: 'text',
@@ -54,8 +47,9 @@ export const handleAddCommand = async (
   const alias = response.alias?.trim() || false;
   const comment = response.comment?.trim() || false;
 
-  if (alias && (!isValidAlias(alias) || !isAliasUnique(alias, commands))) {
-    console.error(chalk.red(`❌ Alias "${alias}" is invalid or already in use. Aborting.`));
+  const aliasCheck = validateAlias(alias || '', commands);
+  if (alias && aliasCheck !== true) {
+    console.error(chalk.red(`❌ ${aliasCheck} Aborting.`));
     return null;
   }
 

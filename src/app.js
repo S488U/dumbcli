@@ -1,7 +1,7 @@
 import yargs from 'yargs/yargs';
 import chalk from 'chalk';
-import { ensureConfigDirExists, getStoragePaths } from './storage/store.js';
-import { parsePowerAddInput } from './core/commands.js';
+import { ensureConfigDirExists, getStoragePaths, readCommands } from './storage/store.js';
+import { findCommandByIdOrAlias, parsePowerAddInput, RESERVED_COMMAND_NAMES } from './core/commands.js';
 import { showWelcome } from './ui/output.js';
 import { handleAddCommand } from './commands/add.js';
 import { handleListCommands } from './commands/list.js';
@@ -120,6 +120,14 @@ export const buildCli = (argv, deps = {}) => {
         return;
       }
 
+      if (!parsed.strict && parsed.input?.length > 0) {
+        const commands = readCommands(paths);
+        if (findCommandByIdOrAlias(parsed.input[0], commands)) {
+          await handleRunCommand(parsed.input[0], parsed.input.slice(1), cmdDeps);
+          return;
+        }
+      }
+
       console.error(chalk.red(`❌ Unknown command: "${rawInput}"`));
       console.log(chalk.dim('Use "dumb --help" to see all available commands.'));
       if (deps.exitProcess !== false) {
@@ -129,6 +137,11 @@ export const buildCli = (argv, deps = {}) => {
   );
 
   return cli
+    .option('strict', {
+      describe: 'Disable implicit command execution (require explicit "run")',
+      type: 'boolean',
+      default: false,
+    })
     .version(CLI_VERSION)
     .alias('v', 'version')
     .help()
@@ -140,8 +153,8 @@ export const buildCli = (argv, deps = {}) => {
     .example('dumb add', 'Add a new command interactively.')
     .example('dumb ls', 'List all stored commands.')
     .example('dumb find "docker"', 'Search commands/comments/aliases for "docker".')
-    .example('dumb run 5', 'Execute the command with ID 5.')
-    .example('dumb run deploy-app', 'Execute the command with alias "deploy-app".')
+    .example('dumb 5', 'Implicitly run the command with ID 5.')
+    .example('dumb deploy-app', 'Implicitly run the command with alias "deploy-app".')
     .example('dumb run build assets/style.css public/style.css', 'Run command "build" with arguments.')
     .example('dumb edit 3', 'Edit the command with ID 3.')
     .example('dumb edit fix-db', 'Edit the command with alias "fix-db".')
@@ -160,7 +173,8 @@ export const runCli = async (argv, deps = {}) => {
   ensureConfigDirExists(paths);
 
   const isTTY = deps.isTTY ?? Boolean(process.stdin.isTTY);
-  const cli = buildCli(argv, { ...deps, paths });
+  const cmdDeps = { ...deps, paths };
+  const cli = buildCli(argv, cmdDeps);
 
   if (argv.length === 0) {
     if (isTTY) {
@@ -169,6 +183,22 @@ export const runCli = async (argv, deps = {}) => {
       cli.showHelp();
     }
     return;
+  }
+
+  const firstArg = argv[0];
+  if ((firstArg === 'run' || firstArg === 'r') && argv[1] && !argv[1].startsWith('-')) {
+    return handleRunCommand(argv[1], argv.slice(2), cmdDeps);
+  }
+
+  if (
+    !firstArg.startsWith('-') &&
+    !RESERVED_COMMAND_NAMES.has(firstArg.toLowerCase()) &&
+    !parsePowerAddInput(argv.join(' '))
+  ) {
+    const commands = readCommands(paths);
+    if (findCommandByIdOrAlias(firstArg, commands)) {
+      return handleRunCommand(firstArg, argv.slice(1), cmdDeps);
+    }
   }
 
   return cli.parseAsync();

@@ -1,7 +1,7 @@
 import chalk from 'chalk';
 import prompts from 'prompts';
 import { getStoragePaths, readCommands, writeCommands } from '../storage/store.js';
-import { findCommandByIdOrAlias, isAliasUnique, isValidAlias } from '../core/commands.js';
+import { findCommandByIdOrAlias, validateAlias } from '../core/commands.js';
 
 /**
  * Interactively edit an existing command's command text, alias, or comment.
@@ -44,13 +44,10 @@ export const handleEditCommand = async (specifier, deps = {}) => {
       validate: (value) => {
         if (value === ' ' || !value) return true;
         const newAlias = value.trim();
-        if (!isValidAlias(newAlias)) return 'Alias cannot contain spaces or colons.';
-        if (newAlias.toLowerCase() !== (cmdToEdit.alias || '').toLowerCase()) {
-          if (!isAliasUnique(newAlias, commands, cmdToEdit.id)) {
-            return `Alias "${newAlias}" is already in use.`;
-          }
+        if (newAlias.toLowerCase() === (cmdToEdit.alias || '').toLowerCase()) {
+          return true;
         }
-        return true;
+        return validateAlias(newAlias, commands, cmdToEdit.id);
       },
     },
     {
@@ -103,9 +100,12 @@ export const handleEditCommand = async (specifier, deps = {}) => {
     return false;
   }
 
-  if (commands[internalIndex].alias && (!isValidAlias(commands[internalIndex].alias) || !isAliasUnique(commands[internalIndex].alias, commands, cmdToEdit.id))) {
-    console.error(chalk.red(`❌ Alias "${commands[internalIndex].alias}" conflict or invalid format detected. Aborting.`));
-    return false;
+  if (commands[internalIndex].alias) {
+    const aliasCheck = validateAlias(commands[internalIndex].alias, commands, cmdToEdit.id);
+    if (aliasCheck !== true) {
+      console.error(chalk.red(`❌ ${aliasCheck} Aborting.`));
+      return false;
+    }
   }
 
   writeCommands(commands, paths);
