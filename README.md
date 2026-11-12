@@ -1,20 +1,11 @@
 # DumbCLI
 
-<p align="center">
-  <pre>
-██████╗ ██╗   ██╗███╗   ███╗███████╗╔██████╗██╗     ██╗
-██╔══██╗██║   ██║████╗ ████║██╔══██║║██╔═══╝██║     ██║
-██║  ██║██║   ██║██╔████╔██║███████║║██║    ██║     ██║
-██║  ██║██║   ██║██║╚██╔╝██║██╔══██║║██║    ██║     ██║
-██████╔╝╚██████╔╝██║ ╚═╝ ██║███████║╚██████╗███████╗██║
-╚═════╝  ╚═════╝ ╚═╝     ╚═╝╚══════╝ ╚═════╝╚══════╝╚═╝
-  </pre>
-</p>
-
-<p align="center">
+<div align="center">
+  <img src=".github/banner.svg" alt="DumbCLI - The Dumb Way to Manage Smart Commands." width="760" />
+  <br><br>
   <b>The "Dumb" Way to Manage Smart Commands.</b><br>
   Stop asking AI for the same command twice. Store it. Trust it. Run it.
-</p>
+</div>
 
 ---
 
@@ -89,13 +80,17 @@ $ dumb add
 ```
 *Follow the prompts to add command, alias, and comments.*
 
-### 2. Run it (The Standard Way)
-Run by ID or Alias.
+### 2. Run it (Direct or Explicit)
+Run directly by ID or Alias (or use `d` as a shortcut for `dumb`):
 ```bash
-$ dumb run 1
+$ dumb 1
 # OR
+$ d build-app
+# OR explicitly with run / r
 $ dumb run build-app
+$ d r 1
 ```
+*Use `--strict` (e.g., `dumb --strict ...`) if you want to disable implicit execution and require `run`.*
 
 ### 3. The Killer Feature: Dynamic Arguments `{}`
 Stop hardcoding paths or messages. Use `{}` as a placeholder when adding a command.
@@ -107,9 +102,11 @@ git commit -m "{}"
 
 **Run it:**
 ```bash
+$ dumb gcom "Fixing the login bug"
+# OR
 $ dumb run gcom "Fixing the login bug"
 ```
-**Result:** Executed `git commit -m "Fixing the login bug"` instantly.
+**Result:** Executed `git commit -m "Fixing the login bug"` instantly. Flags (e.g. `d c -n file.txt`) are forwarded directly to your saved command.
 
 ---
 
@@ -146,15 +143,19 @@ Now the new dev has all the project scripts ready to go!
 
 | Command | Description |
 | :--- | :--- |
+| `dumb <id/alias> [args...]` | Execute a saved command directly (implicit run; `d` works as a binary alias) |
 | `dumb add` | Add a new command interactively |
-| `dumb ls` | List all saved commands (shows ID & Alias) |
-| `dumb find <query>` | Search commands, aliases, or comments |
-| `dumb run <id/alias>` | Execute a command. Add arguments for `{}` placeholders |
-| `dumb edit <id/alias>` | Update a command's logic or alias |
+| `dumb ls` / `dumb list` | List all saved commands (shows ID & Alias) |
+| `dumb find <query>` | Search commands by ID, alias, command text, or comment |
+| `dumb run <id/alias> [args...]` | Explicitly execute a command (`dumb r` is a shorthand alias) |
+| `dumb edit <id/alias>` | Update a command's logic, alias, or comment |
 | `dumb dl <id/alias>` | Delete a command |
-| `dumb import <file>` | Load commands from a JSON file (use `-a` to append) |
+| `dumb import <file>` | Load commands from a JSON file (use `-a` / `--append` to append) |
 | `dumb export [path]` | Backup your commands to JSON |
-| `dumb dump` | Print your JSON file |
+| `dumb dump` | Print your raw `dumbcli.json` file |
+| `dumb --strict ...` | Disable implicit run and require explicit `run` |
+
+> **Note:** Built-in command names (`add`, `ls`, `list`, `dl`, `edit`, `find`, `run`, `r`, `dump`, `export`, `import`, `help`, `version`) are reserved and cannot be used as aliases.
 
 ---
 
@@ -167,7 +168,7 @@ DumbCLI installs the project files in a permanent, OS-specific location:
 This is separate from your personal command data.
 
 ## Configuration & Data
-Your commands and settings are stored locally in `~/.dumbcli/`:
+Your commands and settings are stored locally in `~/.dumbcli/` (or `$DUMBCLI_HOME` if set):
 * Commands: `~/.dumbcli/dumbcli.json`
 * Config: `~/.dumbcli/config.json`
 
@@ -176,5 +177,10 @@ Back up or sync this folder if you want to move your commands across machines.
 ---
 
 ## Contributing
+Run the test suite locally with:
+```bash
+npm test
+```
+
 Found a bug? Want to add a feature?
 Connect with me on GitHub: [https://github.com/S488U](https://github.com/S488U)

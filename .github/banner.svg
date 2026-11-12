@@ -1,0 +1,247 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 230" width="800" height="230" role="img" aria-label="DumbCLI - The Dumb Way to Manage Smart Commands">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d1117"/>
+      <stop offset="100%" stop-color="#161b22"/>
+    </linearGradient>
+    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="55%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Terminal Window Frame -->
+  <rect x="1" y="1" width="798" height="228" rx="14" fill="url(#bgGrad)" stroke="#30363d" stroke-width="2"/>
+  <path d="M 1 15 Q 1 1 15 1 L 785 1 Q 799 1 799 15 L 799 36 L 1 36 Z" fill="#161b22"/>
+  <line x1="1" y1="36" x2="799" y2="36" stroke="#30363d" stroke-width="1"/>
+
+  <!-- Window Controls -->
+  <circle cx="24" cy="18.5" r="5.5" fill="#ff5f56"/>
+  <circle cx="44" cy="18.5" r="5.5" fill="#ffbd2e"/>
+  <circle cx="64" cy="18.5" r="5.5" fill="#27c93f"/>
+  <text x="400" y="23" text-anchor="middle" fill="#8b949e" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="13">dumb ~ zsh</text>
+
+  <!-- 3D Shadow Layer -->
+  <g>
+    <rect x="103" y="61" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="118" y="61" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="133" y="61" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="148" y="61" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="103" y="76" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="163" y="76" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="103" y="91" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="163" y="91" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="103" y="106" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="163" y="106" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="103" y="121" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="163" y="121" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="103" y="136" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="163" y="136" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="103" y="151" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="118" y="151" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="133" y="151" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="148" y="151" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="193" y="61" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="253" y="61" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="193" y="76" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="253" y="76" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="193" y="91" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="253" y="91" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="193" y="106" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="253" y="106" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="193" y="121" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="253" y="121" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="193" y="136" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="253" y="136" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="208" y="151" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="223" y="151" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="238" y="151" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="283" y="61" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="343" y="61" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="283" y="76" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="298" y="76" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="328" y="76" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="343" y="76" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="283" y="91" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="313" y="91" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="343" y="91" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="283" y="106" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="313" y="106" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="343" y="106" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="283" y="121" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="343" y="121" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="283" y="136" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="343" y="136" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="283" y="151" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="343" y="151" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="373" y="61" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="388" y="61" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="403" y="61" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="418" y="61" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="373" y="76" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="433" y="76" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="373" y="91" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="433" y="91" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="373" y="106" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="388" y="106" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="403" y="106" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="418" y="106" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="373" y="121" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="433" y="121" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="373" y="136" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="433" y="136" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="373" y="151" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="388" y="151" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="403" y="151" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="418" y="151" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="493" y="61" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="508" y="61" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="523" y="61" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="478" y="76" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="538" y="76" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="478" y="91" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="478" y="106" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="478" y="121" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="478" y="136" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="538" y="136" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="493" y="151" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="508" y="151" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="523" y="151" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="568" y="61" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="568" y="76" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="568" y="91" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="568" y="106" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="568" y="121" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="568" y="136" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="568" y="151" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="583" y="151" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="598" y="151" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="613" y="151" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="628" y="151" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="658" y="61" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="673" y="61" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="688" y="61" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="673" y="76" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="673" y="91" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="673" y="106" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="673" y="121" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="673" y="136" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="658" y="151" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="673" y="151" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+    <rect x="688" y="151" width="13.5" height="13.5" rx="2.5" fill="#0e7490" opacity="0.55"/>
+  </g>
+
+  <!-- Pixel Logo Layer -->
+  <g>
+    <rect x="100" y="58" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="115" y="58" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="130" y="58" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="145" y="58" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="100" y="73" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="160" y="73" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="100" y="88" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="160" y="88" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="100" y="103" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="160" y="103" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="100" y="118" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="160" y="118" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="100" y="133" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="160" y="133" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="100" y="148" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="115" y="148" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="130" y="148" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="145" y="148" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="190" y="58" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="250" y="58" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="190" y="73" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="250" y="73" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="190" y="88" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="250" y="88" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="190" y="103" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="250" y="103" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="190" y="118" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="250" y="118" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="190" y="133" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="250" y="133" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="205" y="148" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="220" y="148" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="235" y="148" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="280" y="58" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="340" y="58" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="280" y="73" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="295" y="73" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="325" y="73" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="340" y="73" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="280" y="88" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="310" y="88" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="340" y="88" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="280" y="103" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="310" y="103" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="340" y="103" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="280" y="118" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="340" y="118" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="280" y="133" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="340" y="133" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="280" y="148" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="340" y="148" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="370" y="58" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="385" y="58" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="400" y="58" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="415" y="58" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="370" y="73" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="430" y="73" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="370" y="88" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="430" y="88" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="370" y="103" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="385" y="103" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="400" y="103" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="415" y="103" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="370" y="118" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="430" y="118" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="370" y="133" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="430" y="133" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="370" y="148" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="385" y="148" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="400" y="148" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="415" y="148" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="490" y="58" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="505" y="58" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="520" y="58" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="475" y="73" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="535" y="73" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="475" y="88" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="475" y="103" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="475" y="118" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="475" y="133" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="535" y="133" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="490" y="148" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="505" y="148" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="520" y="148" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="565" y="58" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="565" y="73" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="565" y="88" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="565" y="103" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="565" y="118" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="565" y="133" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="565" y="148" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="580" y="148" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="595" y="148" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="610" y="148" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="625" y="148" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="655" y="58" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="670" y="58" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="685" y="58" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="670" y="73" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="670" y="88" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="670" y="103" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="670" y="118" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="670" y="133" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="655" y="148" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="670" y="148" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+    <rect x="685" y="148" width="13.5" height="13.5" rx="2.5" fill="url(#logoGrad)"/>
+  </g>
+
+  <!-- Tagline -->
+  <text x="400" y="198" text-anchor="middle" fill="#facc15" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="15" font-weight="600" letter-spacing="0.4">The &quot;Dumb&quot; Way to Manage Smart Commands.</text>
+</svg>
